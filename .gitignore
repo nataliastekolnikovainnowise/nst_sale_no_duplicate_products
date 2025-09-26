@@ -1,12 +1,5 @@
-# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
-*$py.class
-
-# C extensions
-*.so
-
-# Distribution / packaging
 .Python
 build/
 develop-eggs/
@@ -205,3 +198,27 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+=======
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtualenv
+venv/
+env/
+*.egg-info/
+
+# Odoo
+*.log
+*.pot
+*.mo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Debian packages
+*.deb
+>>>>>>> cd3bfa1 ([NEW] nst_sale_no_duplicate_products: PROJECT-9 Initial commit)

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_order_form_unique_products" model="ir.ui.view">
+        <field name="name">sale.order.form.unique.products</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+
+            <!-- Ограничиваем product_id (варианты) -->
+            <xpath expr="//field[@name='order_line']/form//field[@name='product_id']" position="attributes">
+                <attribute name="domain">[('id', 'not in', parent.used_product_ids)]</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='order_line']/list//field[@name='product_id']" position="attributes">
+                <attribute name="domain">[('id', 'not in', parent.used_product_ids)]</attribute>
+            </xpath>
+
+            <!-- Ограничиваем product_template_id (шаблоны) -->
+            <xpath expr="//notebook//field[@name='product_template_id']" position="replace">
+                <field name="product_template_id"
+                       string="Product"
+                       domain="[('id', 'not in', parent.used_product_templates)]"
+                       widget="sol_product_many2one"
+                       placeholder="Type to find a product..."/>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>
